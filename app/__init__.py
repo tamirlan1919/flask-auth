@@ -12,6 +12,6 @@ def create_app():
         from app.database import models  # Импорт моделей, чтобы они были зарегистрированы
         db.create_all()
 
-    app.register_blueprint(register_bp, prefix_url = '/register')
+    app.register_blueprint(register_bp, url_prefix = '/register')
 
     return app
