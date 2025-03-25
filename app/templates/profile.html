@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Личный кабинет</h2>
+<form method="post">
+   <p>Имя пользователя <input type="text" name="username" value = "{{ user.username }}"></p>
+   <p>Email <input type="text" name="email" value = "{{ user.email }}"></p>
+   <button type="submit">Отправить</button>
+
+</form>
+
+{% endblock %}

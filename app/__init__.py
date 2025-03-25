@@ -4,6 +4,7 @@ from app.database.engine import db
 from app.routes.registration import register_bp
 from app.routes.login import login_bp
 from app.routes.profile import profile_bp
+from app.routes.logout import logout_bp
 
 from flask_login import LoginManager
 from app.database.models import User
@@ -29,5 +30,6 @@ def create_app():
     app.register_blueprint(register_bp, url_prefix = '/register')
     app.register_blueprint(login_bp, url_prefix = '/login')
     app.register_blueprint(profile_bp, url_prefix = '/profile')
+    app.register_blueprint(logout_bp, url_prefix = '/logout')
 
     return app

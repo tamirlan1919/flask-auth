@@ -1,4 +1,4 @@
-from flask import Blueprint, request, flash, redirect, url_for, render_template
+from flask import Blueprint, flash, redirect, render_template
 from app.forms import RegistrationForm
 from app.database.models import User
 from app.database.engine import db

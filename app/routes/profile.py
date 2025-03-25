@@ -1,13 +1,16 @@
-from flask import Blueprint, request, flash, redirect, url_for, render_template
-from app.forms import RegistrationForm
-from app.database.models import User
-from app.database.engine import db
-from werkzeug.security import generate_password_hash
+from flask import Blueprint, request, flash, render_template
 from flask_login import login_required, current_user
+from app.database.engine import db
 
 profile_bp = Blueprint('profile', __name__)
 
-@profile_bp.route('/')
+@profile_bp.route('/', methods = ['GET', 'POST'])
 @login_required
 def profile():
-    return f'Привет {current_user.username}'
+    if request.method == 'POST':
+        current_user.username = request.form.get('username')
+        current_user.email = request.form.get('email')
+        db.session.commit()
+        flash('Ваш профиль изменен!')
+
+    return render_template('profile.html', user = current_user)
